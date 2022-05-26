@@ -2,12 +2,16 @@ import re
 import bs4
 import pandas as pd
 import numpy as np
-import selenium
+from selenium import webdriver
+
 import seaborn as sns
 import requests
 import matplotlib.pyplot as plt
 from bs4 import BeautifulSoup as soup
 from urllib.request import urlopen
+
+PATH = "C:\Program Files (x86)\chromdriver.exe"
+driver = webdriver.chrome(PATH)
 
 #function to create and return a soup object for a given html file.
 def load_soup_object(url):
