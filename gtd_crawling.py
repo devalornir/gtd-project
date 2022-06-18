@@ -23,7 +23,7 @@ def load_html_to_soup(html_source):
     bsobj = soup(html_source, 'html.parser')
     return bsobj
 
-URL = "https://www.start.umd.edu/gtd/search/Results.aspx?chart=injuries&casualties_type=&casualties_max=&count=100"
+URL = "https://www.start.umd.edu/gtd/search/Results.aspx?page=405&chart=injuries&casualties_type=&casualties_max=&count=100"
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 driver.get(URL)
 time.sleep(10)
@@ -71,7 +71,7 @@ for i in range(100):
     nextResultButton = driver.find_element(by=By.PARTIAL_LINK_TEXT, value="MORE RESULTS")
     nextResultButton.click()
 
-df.to_csv('output.csv')
+df.to_csv('output.csv', mode='a', header=False)
 driver.quit()
 
 
